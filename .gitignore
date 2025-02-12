@@ -1,0 +1,40 @@
+# Build artifacts
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.vs
+*.vscode
+
+# Logs and database
+logs/
+*.log
+*.sqlite
+*.db
+
+# Packages
+packages/
+node_modules/
+.vscode/
+
+# Environment files
+.env
+secrets.json
+
+# IDE and editor files
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.exe
+*.dll
+*.pdb
+*.so
+*.dylib
+*.pyc
+*.class
