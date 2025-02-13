@@ -8,14 +8,14 @@ namespace CafeOrderingSystem.Models
 {
     public class Dish
     {
-        public string Name { get; set; }
+        public string Name { get;  }
 
-        public string Description { get; set; }
+        public string Description { get;  }
 
-        public decimal Price { get; set; }
+        public decimal Price { get;  }
 
-        public int EstimatedMinutes { get; set; }
-        public Ingredient[] Ingredients { get; set; }
+        public int EstimatedMinutes { get;  }
+        public Ingredient[] Ingredients { get;  }
 
 
         public Dish(string name, string description, int estimatedMinutes, Ingredient[] ingredients)

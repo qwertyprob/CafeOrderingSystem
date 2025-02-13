@@ -8,34 +8,33 @@ namespace CafeOrderingSystem.Models
 {
     public class Cook
     {
+        private Queue<Dish> Orders = new Queue<Dish>();
         public string Name { get; }
         public Cook(string name)
         {
             Name = name;
         }
-        public bool CanTakeOrderFlag { get { return OrderCount < 5; } }
-        public List<Dish> Orders { get; } = new List<Dish>();
-        public int OrderCount { get { return Orders.Count; } }
 
-        public void AddOrder(Dish dish)
+        public bool IsAvailable { get { return Orders.Count < 5; } }
+
+        public void AssignOrder(Dish dish)
         {
-            if (!CanTakeOrderFlag)
+            if (IsAvailable)
             {
-                throw new Exception("No cooks available");
+                Orders.Enqueue(dish);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\t{Name} received: {dish.Name}");
+                Console.ForegroundColor = ConsoleColor.White;
             }
-            Orders.Add(dish);
-
         }
-        public void OrderMessage()
+
+        public int GetTotalWorkload()
         {
-            Console.WriteLine($"Order is taken by {Name}.\n Time to wait:{EstimateTimeFromOrders} minutes..");
-
+            return Orders.Sum(d => d.EstimatedMinutes);
         }
 
-        public int EstimateTimeFromOrders
-        {
-            get { return Orders.Sum(x => x.EstimatedMinutes); }
+        
 
-        }
+
     }
 }

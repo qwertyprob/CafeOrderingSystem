@@ -25,7 +25,9 @@ It's ok if you implemented only part of requirements. Try do what you can and ha
 
 using CafeOrderingSystem.Factories;
 using CafeOrderingSystem.Models;
+using CafeOrderingSystem.Services;
 using CafeOrderingSystem.Servieces;
+using CafeOrderingSystem.Commands;
 
 namespace CafeOrderingSystem
 {
@@ -34,24 +36,15 @@ namespace CafeOrderingSystem
         
         public static void Main(string[] args)
         {
-            Dish[] Dishes = new Dish[]
+             
+            MenuService.ShowMenu();
+
+            try
             {
-                DishFactory.CreateDish("salad"),
-                DishFactory.CreateDish("soup"),
-                DishFactory.CreateDish("sandwich"),
-                DishFactory.CreateDish("steak"),
-                DishFactory.CreateDish("pizza"),
-                DishFactory.CreateDish("omelette"),
-                DishFactory.CreateDish("burger"),
-                DishFactory.CreateDish("pasta"),
-
-            };
-            
-
-            MenuService.ShowMenu(Dishes);
-
-
-
+                Commands.Commands.Start();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            Console.ResetColor();
 
 
 

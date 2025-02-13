@@ -14,7 +14,7 @@ namespace CafeOrderingSystem.Factories
         {
             var dishes = new Dictionary<string, Dish>
             {
-                { "pasta", new Dish("Pasta", "Tasty Italian pasta",15 ,new Ingredient[]
+                { "pasta", new Dish("Tasty Pasta  ", "Tasty Italian pasta",3 ,new Ingredient[]
                     {
                         new Ingredient("Pasta", 5.00m),
                         new Ingredient("Cheese", 5.00m),
@@ -22,7 +22,7 @@ namespace CafeOrderingSystem.Factories
                     })
                 },
 
-                { "salad", new Dish("Salad", "Tasty healthy salad", 5 ,new Ingredient[]
+                { "salad", new Dish("Healthy Salad", "Tasty healthy salad", 5 ,new Ingredient[]
                     {
                         new Ingredient("Lettuce", 1.00m),
                         new Ingredient("Cucumber", 2.00m),
@@ -32,7 +32,7 @@ namespace CafeOrderingSystem.Factories
                         new Ingredient("Pepper", 1.00m)
                     })
                 },
-                    { "soup", new Dish("Tomate Soup", "Tasty healthy soup", 10 ,new Ingredient[]
+                    { "soup", new Dish("Tomate Soup  ", "Tasty healthy soup", 6 ,new Ingredient[]
                         {
                             new Ingredient("Water", 0.50m),
                             new Ingredient("Potato", 2.00m),
@@ -42,7 +42,7 @@ namespace CafeOrderingSystem.Factories
                             new Ingredient("Pepper", 1.00m)
                         })
                     },
-                { "burger", new Dish("Cheeseburger", "Juicy beef burger with cheese", 15, new Ingredient[]
+                { "burger", new Dish("Cheeseburger", "Juicy beef burger with cheese", 4, new Ingredient[]
                     {
                         new Ingredient("Bun", 2.00m),
                         new Ingredient("Beef Patty", 6.00m),
@@ -54,7 +54,7 @@ namespace CafeOrderingSystem.Factories
                     })
                 },
 
-                { "pizza", new Dish("Pepperoni Pizza", "Delicious cheesy pizza with pepperoni", 20, new Ingredient[]
+                { "pizza", new Dish("Pepperoni Pizza", "Delicious cheesy pizza with pepperoni", 2, new Ingredient[]
                     {
                         new Ingredient("Pizza Dough", 5.00m),
                         new Ingredient("Tomato Sauce", 3.00m),
@@ -64,7 +64,7 @@ namespace CafeOrderingSystem.Factories
                     })
                 },
 
-                { "omelette", new Dish("Cheese Omelette", "Fluffy omelette with cheese", 10, new Ingredient[]
+                { "omelette", new Dish("Cheese Omelette", "Fluffy omelette with cheese", 1, new Ingredient[]
                     {
                         new Ingredient("Eggs", 3.00m),
                         new Ingredient("Milk", 1.00m),
@@ -75,7 +75,7 @@ namespace CafeOrderingSystem.Factories
                     })
                 },
 
-                { "steak", new Dish("Grilled Steak", "Perfectly grilled steak with sides", 25, new Ingredient[]
+                { "steak", new Dish("Grilled Steak", "Perfectly grilled steak with sides", 8, new Ingredient[]
                     {
                         new Ingredient("Beef Steak", 15.00m),
                         new Ingredient("Salt", 1.00m),
@@ -86,7 +86,7 @@ namespace CafeOrderingSystem.Factories
                     })
                 },
 
-                { "sandwich", new Dish("Club Sandwich", "Classic sandwich with turkey, bacon, and cheese", 12, new Ingredient[]
+                { "sandwich", new Dish("Club Sandwich", "Classic sandwich with turkey, bacon, and cheese", 5, new Ingredient[]
                     {
                         new Ingredient("Bread", 2.00m),
                         new Ingredient("Turkey", 4.00m),
