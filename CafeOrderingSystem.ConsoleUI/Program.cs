@@ -1,4 +1,5 @@
 ﻿#region Task
+
 /*
 - Write a console application
 - Try to write clean and maintainable code
@@ -21,34 +22,17 @@ assigned to cook).
 
 It's ok if you implemented only part of requirements. Try do what you can and have fun!
 */
+
 #endregion
 
-using CafeOrderingSystem.Factories;
-using CafeOrderingSystem.Models;
-using CafeOrderingSystem.Services;
-using CafeOrderingSystem.Servieces;
-using CafeOrderingSystem.Commands;
+using CafeOrderingSystem.ConsoleUI.Commands;
 
-namespace CafeOrderingSystem
+namespace CafeOrderingSystem.ConsoleUI;
+
+class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        
-        public static void Main(string[] args)
-        {
-             
-            MenuService.ShowMenu();
-
-            try
-            {
-                Commands.Commands.Start();
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-            Console.ResetColor();
-
-
-
-        }
-
+        ConsoleCommand.Start();
     }
 }
