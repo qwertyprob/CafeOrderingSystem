@@ -44,7 +44,7 @@ public static class OrderService
         }
         catch (Exception e)
         {
-            return false;
+            throw;
         }
     }
 

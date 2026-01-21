@@ -7,45 +7,76 @@ namespace CafeOrderingSystem.ConsoleUI.Commands;
 public static class ConsoleCommand
 {
     private static int _counter = 1;
+    
 
     private static readonly List<Dish> Dishes = MenuService.GetMenu();
     private static string Choice { get; set; } = " ";
 
     public static async Task Start()
     {
-        Console.WriteLine("Cashier: Hi! What would you like to order? [y] - Yes / [n] - No\n");
-        ListOfDishes();
-
-        
-        while (true)
+        bool _isInitialized = false;
+        try
         {
+            CookService.Init(new ConsoleUi());
+            Console.WriteLine("Cashier: Hi! What would you like to order? [y] - Yes / [n] - No\n");
             Choice = Console.ReadLine() ?? string.Empty;
 
-            if (Choice.Trim() == "q")
+            if (Choice == "n")
             {
                 GreenConsoleText("Cassier");
                 Console.WriteLine(": Have a nice day!");
                 return;
             }
-
-            var flag = await OrderService.MakeOrder(Choice);
-
-            if (flag)
+            else if(Choice == "y")
             {
-                var order = OrderService.GetOrder();
+                while (true)
+                {
+                    
+                    if(!_isInitialized)
+                        ListOfDishes();
+                    
+                    
+                    Choice = Console.ReadLine() ?? string.Empty;
 
-                await GetOrderOnConsole(order);
-                CookService.Init(new ConsoleUi());
-                _ = CookService.TakeOrder(order);
+                    _isInitialized = true;
+
+                    if (Choice.Trim() == "q")
+                    {
+                        GreenConsoleText("Cassier");
+                        Console.WriteLine(": Have a nice day!");
+                        return;
+                    }
+
+                    var flag = await OrderService.MakeOrder(Choice);
+                
+                    if(!flag)
+                    {
+                        throw new Exception("Order is null!");
+                    }
+                    
+                    var order = OrderService.GetOrder();
+                        
+                    await GetOrderOnConsole(order);
+                                        
+                    _ = CookService.TakeOrder(order);
+                    
+
+                }
             }
             else
             {
-                Console.WriteLine($"Cassier : error");
+                GreenConsoleText("Program");
+                Console.WriteLine(": I don't know what you want.");
+                return;
             }
 
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        
     }
-
     private static async Task GetOrderOnConsole(Order order)
     {
 
@@ -84,7 +115,6 @@ public static class ConsoleCommand
         Console.ResetColor();
 
     }
-
     private static void ListOfDishes()
     {
         Console.WriteLine();
@@ -109,14 +139,12 @@ public static class ConsoleCommand
         Console.WriteLine($"\t{new string('=', 76)}");
         Console.WriteLine();
     }
-
     private static void GreenConsoleText(string text)
     {
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write(text);
         Console.ResetColor();
     }
-
     private static void RedConsoleText(string text)
     {
         Console.ForegroundColor = ConsoleColor.Red;

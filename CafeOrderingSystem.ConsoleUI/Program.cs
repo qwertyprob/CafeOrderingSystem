@@ -33,6 +33,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        ConsoleCommand.Start();
+        while (true)
+        {
+            ConsoleCommand.Start();
+        }
     }
 }
